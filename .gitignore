@@ -3,5 +3,5 @@
 .vscode
 .DS_Store
 .env
-commands.txt
+# commands.txt
 */appsettings.json
