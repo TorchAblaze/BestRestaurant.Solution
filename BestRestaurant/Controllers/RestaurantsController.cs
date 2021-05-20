@@ -24,7 +24,24 @@ namespace BestRestaurant.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Type");
       return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Restaurant restaurant)
+    {
+      _db.Restaurants.Add(restaurant);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }
+
+// [HttpPost]
+//     public ActionResult Create(Item item)
+//     {
+//       _db.Items.Add(item);
+//       _db.SaveChanges();
+//       return RedirectToAction("Index");
+//     }

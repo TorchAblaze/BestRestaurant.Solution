@@ -6,13 +6,15 @@ namespace BestRestaurant.Models
     {
         public Cuisine()
         {
-            this.Restaurant = new HashSet<Restaurant>();
+            this.Restaurants = new HashSet<Restaurant>();
         }
         // public int Id { get; set; }
-        public string Name { get; set; }
+        public int Entrees { get; set; }
+
+        public string Type { get; set; }
 
         public int CuisineId { get; set; }
         
-        public virtual ICollection<Restaurant> Restaurant { get; set; }
+        public virtual ICollection<Restaurant> Restaurants { get; set; }
     }
 }
