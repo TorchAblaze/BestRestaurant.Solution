@@ -13,15 +13,16 @@
 } 
 else
 {
-  <ul>
+  <ol>
   @foreach (Restaurant restaurant in Model)
   {
     <li>@restaurant.Name</li>
-    <li>@restaurant.Rating</li>
-    <li>@restaurant.Location</li>
-    <li>@Html.ActionLink($"Cuisine ID: {restaurant.CuisineId}", "Details", new { id = restaurant.CuisineId }) | Cuisine ID: @restaurant.CuisineId</li>
+    <ul>
+      <li>@Html.ActionLink($"Restaurant ID: {restaurant.RestaurantId}", "Details", new { id = restaurant.RestaurantId }) | Restaurant ID: @restaurant.RestaurantId</li>
+    </ul>
+    <br>
   }
-  </ul>
+  </ol>
 }
 
 <p>@Html.ActionLink("Add new restaurant", "Create")</p>

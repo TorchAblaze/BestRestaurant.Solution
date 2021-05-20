@@ -8,5 +8,18 @@ namespace BestRestaurant.Models
     public int Rating { get; set; }
     public int CuisineId { get; set; }
     public virtual Cuisine Cuisine { get; set; }
+
+    public string StarRating()
+    {
+      string starRating = "";
+      if (Rating > 0)
+      {
+        for (int i = 1; i <= Rating; i++)
+        {
+          starRating += "⭐ ";
+        }
+      }
+      return starRating;
+    }
   }
 }

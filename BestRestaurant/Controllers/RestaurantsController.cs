@@ -35,13 +35,28 @@ namespace BestRestaurant.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      return View(thisRestaurant);
+    }
+  
+    public ActionResult Edit(int id)
+    {
+      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Type");
+      return View(thisRestaurant);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Restaurant restaurant)
+    {
+      // _db.Entry(restaurant).State = EntityState.Modified;
+      _db.Restaurants.Update(restaurant);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
 
-// [HttpPost]
-//     public ActionResult Create(Item item)
-//     {
-//       _db.Items.Add(item);
-//       _db.SaveChanges();
-//       return RedirectToAction("Index");
-//     }
